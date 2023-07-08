@@ -22,12 +22,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -35,21 +38,24 @@ import com.example.material3sample.bottomNav.BottomNavItem
 import com.example.material3sample.component.MyDateRangePicker
 import com.example.material3sample.ui.theme.AppTheme
 import com.example.material3sample.userflows.MyNavGraph
+import com.example.material3sample.viewmodel.ActivityViewModel
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProvider(this).get(ActivityViewModel::class.java)
         setContent {
-            AppTheme {
-                BottomNav()
+            val useDynamicColor by viewModel.useDynamicColor.observeAsState()
+            AppTheme(useDynamicColor = useDynamicColor ?: false) {
+                BottomNav(viewModel)
             }
         }
     }
 }
 
 @Composable
-fun BottomNav() {
+fun BottomNav(activityViewModel: ActivityViewModel) {
     val navController = rememberNavController()
     val navItems = listOf(
         BottomNavItem("Color Palette", Icons.Filled.Favorite, "colorPalette"),
@@ -75,7 +81,7 @@ fun BottomNav() {
             )
         },
         content = {
-            MyNavGraph(it, navController)
+            MyNavGraph(it, navController, activityViewModel)
         }
     )
 }

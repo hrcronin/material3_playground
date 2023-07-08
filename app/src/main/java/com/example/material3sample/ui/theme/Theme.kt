@@ -80,10 +80,11 @@ fun supportsDynamic() : Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
 @Composable
 fun AppTheme(
+    useDynamicColor: Boolean = false,
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
-    val colors = if (supportsDynamic()) {
+    val colors = if (supportsDynamic() && useDynamicColor) {
         val context = LocalContext.current
         if (useDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     } else {

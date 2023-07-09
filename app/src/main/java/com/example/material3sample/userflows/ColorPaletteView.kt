@@ -16,6 +16,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -68,9 +69,7 @@ fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityVi
 
 @Composable
 private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
-    var isChecked:Boolean by remember {
-        mutableStateOf(false)
-    }
+    val isChecked:Boolean by activityViewModel.useDynamicColor.observeAsState(false)
     Row(
         modifier = Modifier
             .fillMaxSize()
@@ -86,7 +85,6 @@ private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
         Switch(
             checked = isChecked,
             onCheckedChange = { isCheckedValue ->
-                isChecked = isCheckedValue
                 activityViewModel.updateDynamicColor(isCheckedValue)
             }
         )

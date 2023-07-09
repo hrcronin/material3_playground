@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.example.material3sample.userflows.components.Carousel
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 @Composable
@@ -19,6 +21,14 @@ fun MyNavGraph(
         }
         composable("myDatePicker") {
             MyDatePickerView(paddingValues)
+        }
+        navigation(startDestination = "componentList", route = "components") {
+            composable("componentList"){
+                ComponentListView(paddingValues, navController)
+            }
+            composable("component.carousel") {
+                Carousel()
+            }
         }
     }
 

@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -59,7 +60,8 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
     val navController = rememberNavController()
     val navItems = listOf(
         BottomNavItem("Color Palette", Icons.Filled.Favorite, "colorPalette"),
-        BottomNavItem("Date Picker", Icons.Filled.DateRange, "myDatePicker")
+        BottomNavItem("Date Picker", Icons.Filled.DateRange, "myDatePicker"),
+        BottomNavItem("Components", Icons.Filled.List, "components")
     )
     Scaffold(
         bottomBar = {

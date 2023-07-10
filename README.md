@@ -7,6 +7,7 @@ Project to provide a playground with the latest Material 3 features in compose.
 * DateRangePicker
 * Switch: Used to toggle from dynamic colors and non-dynamic
 * Horizontal Pager: basic implementation
+* Cards that utilize the theme's shapes
 
 # Future Material Features
 * Chips

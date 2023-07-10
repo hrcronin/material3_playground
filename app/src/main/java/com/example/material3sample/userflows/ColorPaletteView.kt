@@ -128,6 +128,7 @@ private fun TertiaryGreeting(name: String, modifier: Modifier = Modifier) {
 private fun PrimaryContainer(name: String, modifier: Modifier = Modifier) {
     Card(
         modifier = Modifier.padding(vertical = 12.dp),
+        shape = MaterialTheme.shapes.medium,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -147,6 +148,7 @@ private fun PrimaryContainer(name: String, modifier: Modifier = Modifier) {
 private fun SecondaryContainer(name: String, modifier: Modifier = Modifier) {
     Card(
         modifier = Modifier.padding(vertical = 12.dp),
+        shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -165,6 +167,7 @@ private fun SecondaryContainer(name: String, modifier: Modifier = Modifier) {
 private fun TertiaryContainer(name: String, modifier: Modifier = Modifier) {
     Card(
         modifier = Modifier.padding(vertical = 12.dp),
+        shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             contentColor = MaterialTheme.colorScheme.onTertiaryContainer

@@ -8,14 +8,16 @@ Project to provide a playground with the latest Material 3 features in compose.
 * Switch: Used to toggle from dynamic colors and non-dynamic
 * Horizontal Pager: basic implementation
 * Cards that utilize the theme's shapes
+* Chips
+* Checkbox
+* Radio Buttons
+* Bottom Sheet Scaffold
 
 # Future Material Features
-* Chips
 * Segmented Buttons
 * Search
 * Navigation Rail (in place of bottom app bar)
 * Badges
-* Checkbox
 * Buttons
 * Text Input
 * Buttons 

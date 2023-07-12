@@ -42,6 +42,20 @@ fun ComponentListView(
                 route = "component.chips"
             )
         }
+        item {
+            ClickableRow(
+                annotatedString = buildAnnotatedString { this.append("Checkboxes") },
+                navHostController = navHostController,
+                route = "component.checkbox"
+            )
+        }
+        item {
+            ClickableRow(
+                annotatedString = buildAnnotatedString { this.append("Radio Buttons") },
+                navHostController = navHostController,
+                route = "component.radioGroup"
+            )
+        }
     }
 }
 

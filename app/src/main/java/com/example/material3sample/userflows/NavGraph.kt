@@ -7,7 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.material3sample.userflows.components.Carousel
+import com.example.material3sample.userflows.components.CheckboxView
 import com.example.material3sample.userflows.components.Chips
+import com.example.material3sample.userflows.components.RadioGroupView
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 @Composable
@@ -32,6 +34,12 @@ fun MyNavGraph(
             }
             composable("component.chips") {
                 Chips(paddingValues)
+            }
+            composable("component.checkbox") {
+                CheckboxView(paddingValues)
+            }
+            composable("component.radioGroup") {
+                RadioGroupView(paddingValues)
             }
         }
     }

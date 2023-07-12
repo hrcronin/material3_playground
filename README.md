@@ -1,4 +1,4 @@
-# material3_playground
+# material3 Playground
 Project to provide a playground with the latest Material 3 features in compose.
 
 # Current Material Features used

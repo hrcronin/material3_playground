@@ -12,6 +12,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -28,25 +29,44 @@ fun ComponentListView(
         .padding(paddingValues)
     ) {
         item {
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 10.dp)) {
-                ClickableText(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 10.dp),
-                    text = buildAnnotatedString { this.append("Carousel") },
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onBackground
-                    ),
-                    onClick = {
-                        navHostController.navigate("component.carousel")
-                    }
-                )
-                Divider(thickness = 2.dp, color = MaterialTheme.colorScheme.onBackground)
-            }
-
+            ClickableRow(
+                annotatedString = buildAnnotatedString { this.append("Carousel") },
+                navHostController = navHostController,
+                route = "component.carousel"
+            )
         }
+        item {
+            ClickableRow(
+                annotatedString = buildAnnotatedString { this.append("Chips") },
+                navHostController = navHostController,
+                route = "component.chips"
+            )
+        }
+    }
+}
+
+@Composable
+private fun ClickableRow(
+    annotatedString: AnnotatedString,
+    navHostController: NavHostController,
+    route: String
+) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(vertical = 10.dp)) {
+        ClickableText(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp),
+            text = annotatedString,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onBackground
+            ),
+            onClick = {
+                navHostController.navigate(route)
+            }
+        )
+        Divider(thickness = 2.dp, color = MaterialTheme.colorScheme.onBackground)
     }
 }

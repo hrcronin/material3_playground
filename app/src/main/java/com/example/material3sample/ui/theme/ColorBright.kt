@@ -65,7 +65,6 @@ val bright_dark_surfaceTint = Color(0xFFFFABF3)
 val bright_dark_outlineVariant = Color(0xFF4E444B)
 val bright_dark_scrim = Color(0xFF000000)
 
-
 val brightSeed = Color(0xFFFF00FF)
 val CustomColor1 = Color(0xFF9900FF)
 val light_CustomColor1 = Color(0xFF8B00E8)
@@ -106,9 +105,8 @@ internal val BrightLightColors = lightColorScheme(
     inversePrimary = bright_light_inversePrimary,
     surfaceTint = bright_light_surfaceTint,
     outlineVariant = bright_light_outlineVariant,
-    scrim = bright_light_scrim,
+    scrim = bright_light_scrim
 )
-
 
 internal val BrightDarkColors = darkColorScheme(
     primary = bright_dark_primary,
@@ -139,6 +137,5 @@ internal val BrightDarkColors = darkColorScheme(
     inversePrimary = bright_dark_inversePrimary,
     surfaceTint = bright_dark_surfaceTint,
     outlineVariant = bright_dark_outlineVariant,
-    scrim = bright_dark_scrim,
+    scrim = bright_dark_scrim
 )
-

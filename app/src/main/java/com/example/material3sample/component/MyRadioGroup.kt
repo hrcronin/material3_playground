@@ -25,18 +25,20 @@ fun MyRadioGroup(viewModel: RadioOptionsViewModel) {
         remember { mutableStateOf(false) }
     }
     var deselectOptionState by remember { mutableStateOf(false) }
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(12.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp)
+    ) {
         viewModel.options.forEachIndexed { index, label ->
             var selectedState by selectedStates[index]
             MyRadioItem(
                 label = label,
-                isSelected = selectedState,
+                isSelected = selectedState
             ) { isSelected, selectedLabel ->
                 deselectOptionState = false
                 selectedState = isSelected
-                selectedStates.forEachIndexed{ listIndex, item ->
+                selectedStates.forEachIndexed { listIndex, item ->
                     if (index != listIndex) {
                         item.value = false
                     }
@@ -47,7 +49,7 @@ fun MyRadioGroup(viewModel: RadioOptionsViewModel) {
         viewModel.deselectOption?.let { deselectOption ->
             MyRadioItem(
                 label = deselectOption,
-                isSelected = deselectOptionState,
+                isSelected = deselectOptionState
             ) { isSelected, label ->
                 selectedStates.forEach {
                     it.value = false

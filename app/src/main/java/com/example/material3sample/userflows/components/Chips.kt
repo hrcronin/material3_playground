@@ -16,7 +16,6 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.BottomSheetScaffoldState
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -74,15 +73,15 @@ fun Chips(paddingValues: PaddingValues) {
             )
         }
     )
-
 }
 
 @Composable
 fun SheetContent(sheetModel: ChipSheetModel) {
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .height(sheetModel.height)
-        .padding(12.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(sheetModel.height)
+            .padding(12.dp)
     ) {
         when (sheetModel.type) {
             is ChipType.Assist -> {
@@ -190,9 +189,11 @@ private fun ChipViewContent(
             }
         )
     )
-    LazyColumn(modifier = Modifier
-        .padding(paddingValues)
-        .fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()
+    ) {
         item {
             Text(
                 modifier = Modifier.padding(vertical = 12.dp),
@@ -213,9 +214,11 @@ private fun ChipViewContent(
             }
         }
         item {
-            Divider(thickness = 2.dp, modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 12.dp)
+            Divider(
+                thickness = 2.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 12.dp)
             )
         }
         item {
@@ -243,9 +246,11 @@ fun ChipWithDescription(model: ChipViewModel) {
             modifier = Modifier.padding(bottom = 12.dp),
             model = model
         )
-        Divider(thickness = 2.dp, modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 12.dp)
+        Divider(
+            thickness = 2.dp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 12.dp)
         )
     }
 }

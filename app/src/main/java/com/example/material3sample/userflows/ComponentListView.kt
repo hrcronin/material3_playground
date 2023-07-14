@@ -24,10 +24,11 @@ fun ComponentListView(
     paddingValues: PaddingValues,
     navHostController: NavHostController
 ) {
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .background(MaterialTheme.colorScheme.background)
-        .padding(paddingValues)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(paddingValues)
     ) {
         item {
             ClickableRow(
@@ -73,9 +74,11 @@ private fun ClickableRow(
     navHostController: NavHostController,
     route: String
 ) {
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 10.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 10.dp)
+    ) {
         ClickableText(
             modifier = Modifier
                 .fillMaxWidth()

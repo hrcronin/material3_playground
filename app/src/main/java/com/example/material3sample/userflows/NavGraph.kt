@@ -6,11 +6,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.example.material3sample.userflows.components.Carousel
-import com.example.material3sample.userflows.components.CheckboxView
-import com.example.material3sample.userflows.components.Chips
-import com.example.material3sample.userflows.components.RadioGroupView
-import com.example.material3sample.userflows.components.TextInputView
 import com.example.material3sample.userflows.navigation.Destination
 import com.example.material3sample.userflows.navigation.NavDestination
 import com.example.material3sample.viewmodel.ActivityViewModel
@@ -39,7 +34,7 @@ fun MyNavGraph(
             val childStartDestination = nestedDestination.children.firstOrNull() ?: return@forEach
             navigation(
                 startDestination = childStartDestination.route,
-                route =  nestedDestination.mainRoute.route
+                route = nestedDestination.mainRoute.route
             ) {
                 nestedDestination.children.forEach { child ->
                     composable(route = child.route) {

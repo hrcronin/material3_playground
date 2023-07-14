@@ -15,9 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.example.material3sample.component.MyTextInput
@@ -26,10 +24,11 @@ import com.example.material3sample.component.TextInputModel
 @Composable
 fun TextInputView(paddingValues: PaddingValues) {
     var hideKeyboard by remember { mutableStateOf(false) }
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .clickable { hideKeyboard = true }
-        .padding(12.dp)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable { hideKeyboard = true }
+            .padding(12.dp)
     ) {
         item {
             Text(
@@ -40,7 +39,7 @@ fun TextInputView(paddingValues: PaddingValues) {
         item {
             MyTextInput(
                 model = TextInputModel(
-                    initialValue =  "",
+                    initialValue = "",
                     hint = "This is a hint",
                     label = "Enter your text",
                     leadingIcon = Icons.Filled.Search,
@@ -71,7 +70,7 @@ fun TextInputView(paddingValues: PaddingValues) {
             var hasError by remember { mutableStateOf(false) }
             MyTextInput(
                 model = TextInputModel(
-                    initialValue =  "",
+                    initialValue = "",
                     hint = "Enter text < 5 characters",
                     label = "Enter your text [2]",
                     leadingIcon = Icons.Filled.Search,

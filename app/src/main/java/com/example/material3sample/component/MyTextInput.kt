@@ -36,6 +36,7 @@ data class TextInputModel(
     val validateInput: (String) -> Unit,
     val errorString: String = ""
 )
+
 @Composable
 fun MyTextInput(model: TextInputModel, modifier: Modifier = Modifier) {
     var textInputValue by remember {
@@ -57,12 +58,12 @@ fun MyTextInput(model: TextInputModel, modifier: Modifier = Modifier) {
             value = textInputValue,
             label = { Text(model.label) },
             placeholder = { Text(model.hint) },
-            leadingIcon = model.leadingIcon?.let{
+            leadingIcon = model.leadingIcon?.let {
                 {
                     Icon(imageVector = it, contentDescription = model.hint)
                 }
             },
-            trailingIcon = model.trailingIcon?.let{
+            trailingIcon = model.trailingIcon?.let {
                 {
                     Icon(
                         imageVector = it,
@@ -111,5 +112,4 @@ fun MyTextInput(model: TextInputModel, modifier: Modifier = Modifier) {
             )
         }
     }
-
 }

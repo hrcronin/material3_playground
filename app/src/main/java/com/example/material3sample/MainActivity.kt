@@ -30,7 +30,6 @@ import com.example.material3sample.userflows.navigation.Destination
 import com.example.material3sample.userflows.navigation.NavDestination
 import com.example.material3sample.viewmodel.ActivityViewModel
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

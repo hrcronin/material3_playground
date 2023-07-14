@@ -27,11 +27,12 @@ import com.example.material3sample.viewmodel.ActivityViewModel
 
 @Composable
 fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityViewModel) {
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .background(MaterialTheme.colorScheme.background)
-        .padding(paddingValues)
-        .padding(20.dp)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(paddingValues)
+            .padding(20.dp)
     ) {
         item {
             DynamicColorSwitch(activityViewModel = activityViewModel)
@@ -69,7 +70,7 @@ fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityVi
 
 @Composable
 private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
-    val isChecked:Boolean by activityViewModel.useDynamicColor.observeAsState(false)
+    val isChecked: Boolean by activityViewModel.useDynamicColor.observeAsState(false)
     Row(
         modifier = Modifier
             .fillMaxSize()
@@ -92,12 +93,11 @@ private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
             }
         )
     }
-
 }
 
 @Composable
 private fun ColorPaletteSwitch(activityViewModel: ActivityViewModel) {
-    val isChecked:Boolean by activityViewModel.useDiffPalette.observeAsState(false)
+    val isChecked: Boolean by activityViewModel.useDiffPalette.observeAsState(false)
     Row(
         modifier = Modifier
             .fillMaxSize()
@@ -120,7 +120,6 @@ private fun ColorPaletteSwitch(activityViewModel: ActivityViewModel) {
             }
         )
     }
-
 }
 
 @Composable
@@ -174,7 +173,6 @@ private fun PrimaryContainer(name: String, modifier: Modifier = Modifier) {
         )
     }
 }
-
 
 @Composable
 private fun SecondaryContainer(name: String, modifier: Modifier = Modifier) {

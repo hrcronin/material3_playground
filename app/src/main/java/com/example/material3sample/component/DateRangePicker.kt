@@ -1,7 +1,6 @@
 package com.example.material3sample.component
 
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,15 +26,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.material3sample.ui.theme.AppTheme
 import java.util.Calendar
-import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,10 +53,11 @@ fun MyDateRangePicker(paddingValues: PaddingValues) {
     val selectedEndDate = state.selectedEndDateMillis ?: 0
     val differenceInDays = (selectedEndDate - selectedStartDate) / MILLIS_IN_DAY
     daysSelected = kotlin.math.max(0, differenceInDays.toInt())
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(paddingValues)
-        .padding(12.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .padding(12.dp)
     ) {
         Box(modifier = Modifier) {
             DateRangePicker(
@@ -82,7 +78,7 @@ fun MyDateRangePicker(paddingValues: PaddingValues) {
                         .fillMaxWidth(0.75f)
                         .align(Alignment.BottomCenter)
                         .clickable {
-                           Toast.makeText(context, "$daysSelected clicked", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "$daysSelected clicked", Toast.LENGTH_SHORT).show()
                         },
                     shape = RoundedCornerShape(10.dp),
                     colors = CardDefaults.cardColors(

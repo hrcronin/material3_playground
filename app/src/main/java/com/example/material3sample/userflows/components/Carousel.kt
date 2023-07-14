@@ -2,6 +2,7 @@ package com.example.material3sample.userflows.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
@@ -17,7 +18,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Carousel() {
+fun Carousel(paddingValues: PaddingValues) {
     val pages = listOf(
         "Title" to "This is a subtitle",
         "Title Two" to "This is a subtitle on the second page.",
@@ -26,7 +27,8 @@ fun Carousel() {
     HorizontalPager(
         pageCount = pages.size,
         state = rememberPagerState(),
-        pageSpacing = 10.dp
+        pageSpacing = 10.dp,
+        modifier = Modifier.padding(paddingValues)
     ) {
         Card(
             modifier = Modifier.fillMaxWidth(70f).padding(10.dp),

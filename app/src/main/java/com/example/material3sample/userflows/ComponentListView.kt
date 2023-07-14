@@ -17,6 +17,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.material3sample.userflows.navigation.Destination
 
 @Composable
 fun ComponentListView(
@@ -32,28 +33,35 @@ fun ComponentListView(
             ClickableRow(
                 annotatedString = buildAnnotatedString { this.append("Carousel") },
                 navHostController = navHostController,
-                route = "component.carousel"
+                route = Destination.CarouselDestination().route
             )
         }
         item {
             ClickableRow(
                 annotatedString = buildAnnotatedString { this.append("Chips") },
                 navHostController = navHostController,
-                route = "component.chips"
+                route = Destination.ChipDestination().route
             )
         }
         item {
             ClickableRow(
                 annotatedString = buildAnnotatedString { this.append("Checkboxes") },
                 navHostController = navHostController,
-                route = "component.checkbox"
+                route = Destination.CheckBoxDestination().route
             )
         }
         item {
             ClickableRow(
                 annotatedString = buildAnnotatedString { this.append("Radio Buttons") },
                 navHostController = navHostController,
-                route = "component.radioGroup"
+                route = Destination.RadioGroupDestination().route
+            )
+        }
+        item {
+            ClickableRow(
+                annotatedString = buildAnnotatedString { this.append("Text Inputs") },
+                navHostController = navHostController,
+                route = "component.textInput"
             )
         }
     }

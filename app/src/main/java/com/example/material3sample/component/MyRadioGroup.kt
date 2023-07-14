@@ -50,7 +50,7 @@ fun MyRadioGroup(viewModel: RadioOptionsViewModel) {
             MyRadioItem(
                 label = deselectOption,
                 isSelected = deselectOptionState
-            ) { isSelected, label ->
+            ) { _, _ ->
                 selectedStates.forEach {
                     it.value = false
                 }

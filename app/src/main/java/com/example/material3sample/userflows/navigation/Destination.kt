@@ -46,31 +46,31 @@ sealed class Destination(
     )
     class CarouselDestination : Destination(
         route = "component.carousel",
-        composable = { backstackEntry, paddingValues, activityViewModel, _ ->
+        composable = { _, paddingValues, _, _ ->
             Carousel(paddingValues)
         }
     )
     class ChipDestination : Destination(
         route = "component.chips",
-        composable = { backstackEntry, paddingValues, activityViewModel, _ ->
+        composable = { _, paddingValues, _, _ ->
             Chips(paddingValues)
         }
     )
     class CheckBoxDestination : Destination(
         route = "component.checkbox",
-        composable = { backstackEntry, paddingValues, activityViewModel, _ ->
+        composable = { _, paddingValues, _, _ ->
             CheckboxView(paddingValues)
         }
     )
     class RadioGroupDestination : Destination(
         route = "component.radioGroup",
-        composable = { backstackEntry, paddingValues, activityViewModel, _ ->
+        composable = { _, paddingValues, _, _ ->
             RadioGroupView(paddingValues = paddingValues)
         }
     )
     class TextInputDest : Destination(
         route = "component.textInput",
-        composable = { backstackEntry, paddingValues, activityViewModel, _ ->
+        composable = { _, paddingValues, _, _ ->
             TextInputView(paddingValues = paddingValues)
         }
     )

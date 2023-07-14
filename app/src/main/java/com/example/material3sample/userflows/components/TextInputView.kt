@@ -28,6 +28,7 @@ fun TextInputView(paddingValues: PaddingValues) {
         modifier = Modifier
             .fillMaxSize()
             .clickable { hideKeyboard = true }
+            .padding(paddingValues)
             .padding(12.dp)
     ) {
         item {

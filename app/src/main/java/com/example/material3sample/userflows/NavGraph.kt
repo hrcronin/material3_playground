@@ -10,38 +10,43 @@ import com.example.material3sample.userflows.components.Carousel
 import com.example.material3sample.userflows.components.CheckboxView
 import com.example.material3sample.userflows.components.Chips
 import com.example.material3sample.userflows.components.RadioGroupView
+import com.example.material3sample.userflows.components.TextInputView
+import com.example.material3sample.userflows.navigation.Destination
+import com.example.material3sample.userflows.navigation.NavDestination
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 @Composable
 fun MyNavGraph(
     paddingValues: PaddingValues,
     navController: NavHostController,
-    activityViewModel: ActivityViewModel
+    activityViewModel: ActivityViewModel,
+    destinations: List<NavDestination>,
+    startDestination: Destination
 ) {
-    NavHost(navController = navController, startDestination = "colorPalette") {
-        composable("colorPalette") {
-            ColorPaletteView(paddingValues, activityViewModel)
+    val destinationsWithNoChildren = destinations.filter {
+        it.children.isEmpty()
+    }
+    val destinationsWithChildren = destinations.filter {
+        it.children.isNotEmpty()
+    }
+    NavHost(navController = navController, startDestination = startDestination.route) {
+        destinationsWithNoChildren.forEach { dest ->
+            composable(dest.mainRoute.route) {
+                dest.mainRoute.composable(it, paddingValues, activityViewModel, navController)
+            }
         }
-        composable("myDatePicker") {
-            MyDatePickerView(paddingValues)
-        }
-        navigation(startDestination = "componentList", route = "components") {
-            composable("componentList"){
-                ComponentListView(paddingValues, navController)
-            }
-            composable("component.carousel") {
-                Carousel()
-            }
-            composable("component.chips") {
-                Chips(paddingValues)
-            }
-            composable("component.checkbox") {
-                CheckboxView(paddingValues)
-            }
-            composable("component.radioGroup") {
-                RadioGroupView(paddingValues)
+        destinationsWithChildren.forEach { nestedDestination ->
+            val childStartDestination = nestedDestination.children.firstOrNull() ?: return@forEach
+            navigation(
+                startDestination = childStartDestination.route,
+                route =  nestedDestination.mainRoute.route
+            ) {
+                nestedDestination.children.forEach { child ->
+                    composable(route = child.route) {
+                        child.composable(it, paddingValues, activityViewModel, navController)
+                    }
+                }
             }
         }
     }
-
 }

@@ -3,20 +3,13 @@ package com.example.material3sample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -27,18 +20,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.material3sample.bottomNav.BottomNavItem
-import com.example.material3sample.component.MyDateRangePicker
 import com.example.material3sample.ui.theme.AppTheme
 import com.example.material3sample.userflows.MyNavGraph
+import com.example.material3sample.userflows.navigation.Destination
+import com.example.material3sample.userflows.navigation.NavDestination
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 
@@ -63,6 +52,21 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
         BottomNavItem("Date Picker", Icons.Filled.DateRange, "myDatePicker"),
         BottomNavItem("Components", Icons.Filled.List, "components")
     )
+    val navGraphDestinations = listOf(
+        NavDestination(Destination.ColorPalette()),
+        NavDestination(Destination.DatePicker()),
+        NavDestination(
+            mainRoute = Destination.ComponentList(),
+            children = listOf(
+                Destination.ComponentListChild(),
+                Destination.CarouselDestination(),
+                Destination.ChipDestination(),
+                Destination.CheckBoxDestination(),
+                Destination.RadioGroupDestination(),
+                Destination.TextInputDest()
+            )
+        )
+    )
     Scaffold(
         bottomBar = {
             BottomAppBar(
@@ -83,7 +87,13 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
             )
         },
         content = {
-            MyNavGraph(it, navController, activityViewModel)
+            MyNavGraph(
+                paddingValues = it,
+                navController = navController,
+                activityViewModel = activityViewModel,
+                startDestination = Destination.ColorPalette(),
+                destinations = navGraphDestinations
+            )
         }
     )
 }

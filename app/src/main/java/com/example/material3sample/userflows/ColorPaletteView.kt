@@ -17,9 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -38,6 +35,9 @@ fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityVi
     ) {
         item {
             DynamicColorSwitch(activityViewModel = activityViewModel)
+        }
+        item {
+            ColorPaletteSwitch(activityViewModel = activityViewModel)
         }
         item {
             Divider(
@@ -85,12 +85,44 @@ private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
         Switch(
             checked = isChecked,
             onCheckedChange = { isCheckedValue ->
+                if (isCheckedValue) {
+                    activityViewModel.updateOtherPalette(false)
+                }
                 activityViewModel.updateDynamicColor(isCheckedValue)
             }
         )
     }
 
 }
+
+@Composable
+private fun ColorPaletteSwitch(activityViewModel: ActivityViewModel) {
+    val isChecked:Boolean by activityViewModel.useDiffPalette.observeAsState(false)
+    Row(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            modifier = Modifier.padding(end = 10.dp),
+            text = "Color Palette Switch",
+            style = MaterialTheme.typography.titleLarge
+        )
+        Switch(
+            checked = isChecked,
+            onCheckedChange = { isCheckedValue ->
+                if (isCheckedValue) {
+                    activityViewModel.updateDynamicColor(false)
+                }
+                activityViewModel.updateOtherPalette(isCheckedValue)
+            }
+        )
+    }
+
+}
+
 @Composable
 private fun PrimaryGreeting(name: String, modifier: Modifier = Modifier) {
     Text(

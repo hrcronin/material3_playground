@@ -37,7 +37,11 @@ class MainActivity : ComponentActivity() {
         val viewModel = ViewModelProvider(this).get(ActivityViewModel::class.java)
         setContent {
             val useDynamicColor by viewModel.useDynamicColor.observeAsState()
-            AppTheme(useDynamicColor = useDynamicColor ?: false) {
+            val useOtherPalette by viewModel.useDiffPalette.observeAsState()
+            AppTheme(
+                useDynamicColor = useDynamicColor ?: false,
+                useOptionalPalette = useOtherPalette ?: false
+            ) {
                 BottomNav(viewModel)
             }
         }

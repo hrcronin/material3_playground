@@ -13,9 +13,10 @@ Project to provide a playground with the latest Material 3 features in compose.
 * Radio Buttons
 * Bottom Sheet Scaffold
 * Text Input
+* Toggle color palette
 
 # Future Material Features
-* Toggle color palette
+* Update color palette based on image
 * Top App bar on component list
 * Segmented Buttons
 * Search

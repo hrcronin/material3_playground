@@ -11,4 +11,11 @@ class ActivityViewModel: ViewModel() {
     fun updateDynamicColor(useDynamicColor: Boolean) {
         _useDynamicColor.value = useDynamicColor
     }
+
+    private val _useDiffColorPalette = MutableLiveData(false)
+    val useDiffPalette: LiveData<Boolean> = _useDiffColorPalette
+
+    fun updateOtherPalette(useOtherPalette: Boolean) {
+        _useDiffColorPalette.value = useOtherPalette
+    }
 }

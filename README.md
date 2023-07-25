@@ -14,14 +14,14 @@ Project to provide a playground with the latest Material 3 features in compose.
 * Bottom Sheet Scaffold
 * Text Input
 * Toggle color palette
+* Top App Bar
 
 # Future Material Features
 * Update color palette based on image
-* Top App bar on component list
 * Segmented Buttons
 * Search
-* Navigation Rail (in place of bottom app bar)
 * Badges
 * Buttons
 * FAB
+* Navigation Rail (in place of bottom app bar)
 * Details on when to use each

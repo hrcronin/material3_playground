@@ -41,37 +41,37 @@ sealed class Destination(
     class ComponentListChild : Destination(
         route = "componentList",
         composable = { _, paddingValues, _, navHostController ->
-            ComponentListView(paddingValues = paddingValues, navHostController = navHostController)
+            ComponentListView(paddingValuesParent = paddingValues, navHostController = navHostController)
         } // nothing, because this is nested graph
     )
     class CarouselDestination : Destination(
         route = "component.carousel",
-        composable = { _, paddingValues, _, _ ->
-            Carousel(paddingValues)
+        composable = { _, paddingValues, _, navController ->
+            Carousel(paddingValues, navController)
         }
     )
     class ChipDestination : Destination(
         route = "component.chips",
-        composable = { _, paddingValues, _, _ ->
-            Chips(paddingValues)
+        composable = { _, paddingValues, _, navController ->
+            Chips(paddingValues, navController)
         }
     )
     class CheckBoxDestination : Destination(
         route = "component.checkbox",
-        composable = { _, paddingValues, _, _ ->
-            CheckboxView(paddingValues)
+        composable = { _, paddingValues, _, navController ->
+            CheckboxView(paddingValues, navController)
         }
     )
     class RadioGroupDestination : Destination(
         route = "component.radioGroup",
-        composable = { _, paddingValues, _, _ ->
-            RadioGroupView(paddingValues = paddingValues)
+        composable = { _, paddingValues, _, navController ->
+            RadioGroupView(paddingValues, navController)
         }
     )
     class TextInputDest : Destination(
         route = "component.textInput",
-        composable = { _, paddingValues, _, _ ->
-            TextInputView(paddingValues = paddingValues)
+        composable = { _, paddingValues, _, navController ->
+            TextInputView(paddingValues, navController)
         }
     )
 }

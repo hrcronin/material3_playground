@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -22,11 +23,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.material3sample.ui.theme.AppTheme
+import com.example.material3sample.userflows.navigation.Destination
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 @Composable
-fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityViewModel) {
+fun ColorPaletteView(
+    paddingValues: PaddingValues,
+    activityViewModel: ActivityViewModel,
+    navHostController: NavHostController
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -45,6 +52,15 @@ fun ColorPaletteView(paddingValues: PaddingValues, activityViewModel: ActivityVi
                 modifier = Modifier.fillMaxWidth(),
                 thickness = 2.dp,
                 color = MaterialTheme.colorScheme.primary
+            )
+        }
+        item {
+            Button(
+                modifier = Modifier.padding(vertical = 12.dp),
+                onClick = { navHostController.navigate(Destination.ImageColorPalette().route) },
+                content = {
+                    Text("Color Palette From Image")
+                }
             )
         }
         item {

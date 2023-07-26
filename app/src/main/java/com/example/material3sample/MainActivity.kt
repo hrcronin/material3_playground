@@ -57,6 +57,7 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
     )
     val navGraphDestinations = listOf(
         NavDestination(Destination.ColorPalette()),
+        NavDestination(Destination.ImageColorPalette()),
         NavDestination(Destination.DatePicker()),
         NavDestination(
             mainRoute = Destination.ComponentList(),

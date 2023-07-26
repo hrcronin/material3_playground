@@ -2,6 +2,7 @@ package com.example.material3sample.userflows.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.example.material3sample.userflows.ColorPaletteView
@@ -12,6 +13,7 @@ import com.example.material3sample.userflows.components.CheckboxView
 import com.example.material3sample.userflows.components.Chips
 import com.example.material3sample.userflows.components.RadioGroupView
 import com.example.material3sample.userflows.components.TextInputView
+import com.example.material3sample.userflows.imagepalette.ImagePaletteView
 import com.example.material3sample.viewmodel.ActivityViewModel
 
 data class NavDestination(
@@ -24,8 +26,14 @@ sealed class Destination(
 ) {
     class ColorPalette : Destination(
         route = "colorPalette",
+        composable = { _, paddingValues, activityViewModel, controller ->
+            ColorPaletteView(paddingValues, activityViewModel, controller)
+        }
+    )
+    class ImageColorPalette : Destination(
+        route = "imageColorPalette",
         composable = { _, paddingValues, activityViewModel, _ ->
-            ColorPaletteView(paddingValues, activityViewModel)
+            ImagePaletteView(paddingValues = paddingValues, viewModel = viewModel())
         }
     )
     class DatePicker : Destination(

@@ -19,9 +19,9 @@ Project to provide a playground with the latest Material 3 features in compose.
 * Buttons
 * FAB
 * Badges
+* Navigation Rail (in place of bottom app bar)
 
 # Future Material Features
-* Navigation Rail (in place of bottom app bar)
 * Search (planned; not in compose libs yet)
 * Segmented Buttons (planned; not in compose libs yet)
 * Carousel (planned; not in compose libs yet)

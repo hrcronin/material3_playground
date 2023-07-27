@@ -15,11 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.material3sample.bottomNav.BottomNavItem
+import com.example.material3sample.bottomNav.NavBarItem
 
 @Composable
-fun BottomNavButtonWithBadge(
-    navItem: BottomNavItem,
+fun IconButtonWithBadge(
+    showLabel: Boolean = true,
+    navItem: NavBarItem,
     navHostController: NavHostController
 ) {
     var badgeCount by remember {
@@ -44,7 +45,9 @@ fun BottomNavButtonWithBadge(
             ) {
                 Icon(navItem.icon, contentDescription = navItem.label)
             }
-            Text(text = navItem.label)
+            if (showLabel) {
+                Text(text = navItem.label)
+            }
         }
     }
 }

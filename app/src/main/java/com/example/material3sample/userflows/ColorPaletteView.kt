@@ -48,6 +48,9 @@ fun ColorPaletteView(
             ColorPaletteSwitch(activityViewModel = activityViewModel)
         }
         item {
+            NavDirectionSwitch(activityViewModel = activityViewModel)
+        }
+        item {
             Divider(
                 modifier = Modifier.fillMaxWidth(),
                 thickness = 2.dp,
@@ -133,6 +136,30 @@ private fun ColorPaletteSwitch(activityViewModel: ActivityViewModel) {
                     activityViewModel.updateDynamicColor(false)
                 }
                 activityViewModel.updateOtherPalette(isCheckedValue)
+            }
+        )
+    }
+}
+
+@Composable
+private fun NavDirectionSwitch(activityViewModel: ActivityViewModel) {
+    val isChecked: Boolean by activityViewModel.useVerticalNav.observeAsState(false)
+    Row(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            modifier = Modifier.padding(end = 10.dp),
+            text = "Navigation Bar Switch",
+            style = MaterialTheme.typography.titleLarge
+        )
+        Switch(
+            checked = isChecked,
+            onCheckedChange = { isCheckedValue ->
+                activityViewModel.useVerticalNav(isCheckedValue)
             }
         )
     }

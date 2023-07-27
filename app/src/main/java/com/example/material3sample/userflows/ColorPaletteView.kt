@@ -1,12 +1,15 @@
 package com.example.material3sample.userflows
 
+import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -98,7 +101,7 @@ private fun DynamicColorSwitch(activityViewModel: ActivityViewModel) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            modifier = Modifier.padding(end = 10.dp),
+            modifier = Modifier.padding(end = 10.dp).weight(0.5f),
             text = "Dynamic Color",
             style = MaterialTheme.typography.titleLarge
         )
@@ -119,16 +122,17 @@ private fun ColorPaletteSwitch(activityViewModel: ActivityViewModel) {
     val isChecked: Boolean by activityViewModel.useDiffPalette.observeAsState(false)
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            modifier = Modifier.padding(end = 10.dp),
+            modifier = Modifier.padding(end = 10.dp).weight(0.5f),
             text = "Color Palette Switch",
             style = MaterialTheme.typography.titleLarge
         )
+        Spacer(modifier = Modifier.width(5.dp))
         Switch(
             checked = isChecked,
             onCheckedChange = { isCheckedValue ->
@@ -152,7 +156,7 @@ private fun NavDirectionSwitch(activityViewModel: ActivityViewModel) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            modifier = Modifier.padding(end = 10.dp),
+            modifier = Modifier.padding(end = 10.dp).weight(0.5f),
             text = "Navigation Bar Switch",
             style = MaterialTheme.typography.titleLarge
         )

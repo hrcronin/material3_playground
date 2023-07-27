@@ -3,6 +3,7 @@ package com.example.material3sample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -18,12 +19,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.material3sample.bottomNav.BottomNavItem
+import com.example.material3sample.component.BottomNavButtonWithBadge
+import com.example.material3sample.component.MyBadge
 import com.example.material3sample.ui.theme.AppTheme
 import com.example.material3sample.userflows.MyNavGraph
 import com.example.material3sample.userflows.navigation.Destination
@@ -78,15 +85,10 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
                 contentColor = MaterialTheme.colorScheme.primary,
                 actions = {
                     navItems.forEach { navItem ->
-                        Column(
-                            modifier = Modifier.padding(horizontal = 12.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            IconButton(onClick = { navController.navigate(navItem.navRoute) }) {
-                                Icon(navItem.icon, contentDescription = navItem.label)
-                            }
-                            Text(text = navItem.label)
-                        }
+                        BottomNavButtonWithBadge(
+                            navItem = navItem,
+                            navHostController =  navController
+                        )
                     }
                 }
             )
@@ -102,3 +104,5 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
         }
     )
 }
+
+

@@ -16,12 +16,13 @@ Project to provide a playground with the latest Material 3 features in compose.
 * Toggle color palette
 * Top App Bar
 * Update color palette based on image
-
-# Future Material Features
-* Segmented Buttons
 * Buttons
 * FAB
+
+# Future Material Features
 * Search
 * Badges
 * Navigation Rail (in place of bottom app bar)
 * Details on when to use each
+* Segmented Buttons (not in compose libs yet)
+* Carousel (not in compose libs yet)

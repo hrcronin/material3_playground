@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import com.example.material3sample.userflows.ColorPaletteView
 import com.example.material3sample.userflows.ComponentListView
 import com.example.material3sample.userflows.MyDatePickerView
+import com.example.material3sample.userflows.components.ButtonView
 import com.example.material3sample.userflows.components.Carousel
 import com.example.material3sample.userflows.components.CheckboxView
 import com.example.material3sample.userflows.components.Chips
@@ -80,6 +81,12 @@ sealed class Destination(
         route = "component.textInput",
         composable = { _, paddingValues, _, navController ->
             TextInputView(paddingValues, navController)
+        }
+    )
+    class ButtonsDest : Destination(
+        route = "component.buttons",
+        composable = { _, paddingValues, _, navController ->
+            ButtonView(paddingValues = paddingValues, navHostController = navController)
         }
     )
 }

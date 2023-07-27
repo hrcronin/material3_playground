@@ -70,7 +70,14 @@ fun ComponentListView(
                 ClickableRow(
                     annotatedString = buildAnnotatedString { this.append("Text Inputs") },
                     navHostController = navHostController,
-                    route = "component.textInput"
+                    route = Destination.TextInputDest().route
+                )
+            }
+            item {
+                ClickableRow(
+                    annotatedString = buildAnnotatedString { this.append("Buttons") },
+                    navHostController = navHostController,
+                    route = Destination.ButtonsDest().route
                 )
             }
         }

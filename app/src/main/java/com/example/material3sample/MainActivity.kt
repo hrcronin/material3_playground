@@ -67,7 +67,8 @@ fun BottomNav(activityViewModel: ActivityViewModel) {
                 Destination.ChipDestination(),
                 Destination.CheckBoxDestination(),
                 Destination.RadioGroupDestination(),
-                Destination.TextInputDest()
+                Destination.TextInputDest(),
+                Destination.ButtonsDest()
             )
         )
     )
